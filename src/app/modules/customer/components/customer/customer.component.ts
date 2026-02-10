@@ -70,11 +70,10 @@ export class CustomerComponent implements OnInit{
   });
   }
 
-  /*
-  edit(id:number, name: string, description: string){
+  edit(customerId:number, documentType: string, documentNumber: string, name:string,email:string,mobileNumber:string){
     const dialogRef = this.dialog.open(NewCustomerComponent , {
       width: '450px',
-      data: {id: id, name: name, description: description}
+      data: {customerId: customerId, documentType: documentType, documentNumber: documentNumber, name:name, email:email, mobileNumber:mobileNumber}
     });
 
     dialogRef.afterClosed().subscribe((result:any) => {
@@ -87,6 +86,7 @@ export class CustomerComponent implements OnInit{
     });
   }
 
+  /*
   delete(id: any){
     const dialogRef = this.dialog.open(ConfirmComponent , {
       data: {id: id, module: "customer"}
@@ -112,7 +112,7 @@ export class CustomerComponent implements OnInit{
               this.processCustomerResponse(resp);
             })
   }
-*/
+ */
   openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{
     return this.snackBar.open(message, action, {
       duration: 2000

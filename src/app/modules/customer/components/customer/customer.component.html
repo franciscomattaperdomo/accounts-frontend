@@ -51,11 +51,11 @@
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element; let i=index;">
 
-                    <button mat-icon-button color="accent" > <!--(click)="edit(element.customerId, element.documentType, element.documentNumber, element.name, element.email,element.mobileNumber)"-->
+                    <button mat-icon-button color="accent" (click)="edit(element.customerId, element.documentType, element.documentNumber, element.name, element.email,element.mobileNumber)">
                         <mat-icon aria-label="Edit">edit</mat-icon>
                     </button>
 
-                    <button mat-icon-button color="accent" > <!--(click)="delete(element.customerId)"-->
+                    <button mat-icon-button color="accent" >  <!--(click)="delete(element.customerId)"-->
                         <mat-icon aria-label="Delete">delete</mat-icon>
                     </button>
                 </td>

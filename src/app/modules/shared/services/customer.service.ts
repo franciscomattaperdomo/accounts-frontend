@@ -31,7 +31,7 @@ export class CustomerService {
    * update customer
    */
   updateCustomer(body: any, customerId: any){
-    const endpoint = `${base_url}/customers/ ${customerId}`;
+    const endpoint = `${base_url}/customers/${customerId}`;
     return this.http.put(endpoint, body);
   }
 

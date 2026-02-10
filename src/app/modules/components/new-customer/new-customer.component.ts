@@ -30,7 +30,7 @@ export class NewCustomerComponent implements OnInit{
 
     if (this.data != null ){
       this.updateForm(this.data);
-      this.formStatus = "Actualizar";
+      this.formStatus = "Actualización";
     }
   }
 
@@ -45,9 +45,10 @@ export class NewCustomerComponent implements OnInit{
 
     if (this.data != null ){
       //update registry
-      this.customerService.updateCustomer(data, this.data.id)
+      this.customerService.updateCustomer(data, this.data.customerId)
         .subscribe({
         next: (response: any) => {
+          console.log(response);
           this.dialogRef.close(1);
         },
         error: (error: any) => {
@@ -75,8 +76,11 @@ export class NewCustomerComponent implements OnInit{
 
   updateForm(data: any){
     this.customerForm = this.fb.group( {
+      documentType: [data.documentType, Validators.required],
+      documentNumber: [data.documentNumber, Validators.required],
       name: [data.name, Validators.required],
-      description: [data.description, Validators.required]
+      email: [data.email, Validators.required],
+      mobileNumber: [data.mobileNumber, Validators.required],
     });
   }
 }
