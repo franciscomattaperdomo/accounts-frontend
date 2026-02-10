@@ -47,7 +47,7 @@ export class CustomerService {
    * get customer by id
    */
   getCustomerById(customerId: any){
-    const endpoint = `${base_url}/customers/ ${customerId}`;
+    const endpoint = `${base_url}/customers/${customerId}`;
     return this.http.get(endpoint);
   }
 

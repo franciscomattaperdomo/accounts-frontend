@@ -44,7 +44,7 @@ export class CustomerComponent implements OnInit{
   processCustomerResponse(resp: any){
     const dataCustomer: CustomerElement[] = [];
 
-    let listCustomer = resp;
+    let listCustomer = Array.isArray(resp) ? resp : [resp];
 
     listCustomer.forEach((element: CustomerElement) => {
       dataCustomer.push(element);
@@ -53,7 +53,6 @@ export class CustomerComponent implements OnInit{
     this.dataSource = new MatTableDataSource<CustomerElement>(dataCustomer);
     this.dataSource.paginator = this.paginator;
   }
-
 
   openCustomerDialog(){
     const dialogRef = this.dialog.open(NewCustomerComponent , {
@@ -87,7 +86,6 @@ export class CustomerComponent implements OnInit{
     });
   }
 
-
   delete(customerId: any){
     const dialogRef = this.dialog.open(ConfirmComponent , {
       data: {customerId: customerId, module: "customer"}
@@ -104,24 +102,29 @@ export class CustomerComponent implements OnInit{
     });
   }
 
-  /*
-  search( term: string){
-    if( term.length === 0){
+  search( customerId: string){
+    if( customerId.length === 0){
       return this.getCustomers();
     }
-    this.customerService.getCustomerById(term)
-            .subscribe( (resp: any) => {
-              this.processCustomerResponse(resp);
-            })
+
+    this.customerService.getCustomerById(customerId)
+      .subscribe({
+        next: (data: any) => {
+          console.log('respuesta clientes: ', data);
+          this.processCustomerResponse(data);
+        },
+        error: (error: any) => {
+          console.log('error: ', error);
+        }
+      });
+
   }
- */
+
   openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{
     return this.snackBar.open(message, action, {
       duration: 2000
     })
-
   }
-
 }
 
 export interface CustomerElement {
