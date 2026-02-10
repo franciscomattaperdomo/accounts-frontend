@@ -3,6 +3,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
+import { NewCustomerComponent } from 'src/app/modules/components/new-customer/new-customer.component';
 import { CustomerService } from 'src/app/modules/shared/services/customer.service';
 
 @Component({
@@ -52,7 +53,7 @@ export class CustomerComponent implements OnInit{
     this.dataSource.paginator = this.paginator;
   }
 
-  /*
+
   openCustomerDialog(){
     const dialogRef = this.dialog.open(NewCustomerComponent , {
       width: '450px'
@@ -61,14 +62,15 @@ export class CustomerComponent implements OnInit{
     dialogRef.afterClosed().subscribe((result:any) => {
 
     if( result == 1){
-      this.openSnackBar("Cliente Agregado", "Exitosa");
+      this.openSnackBar("Cliente creado", "Exitosa");
       this.getCustomers();
     } else if (result == 2) {
-      this.openSnackBar("Se produjo un error al guardar cliente", "Error");
+      this.openSnackBar("Se produjo un error al crear un cliente", "Error");
     }
   });
   }
 
+  /*
   edit(id:number, name: string, description: string){
     const dialogRef = this.dialog.open(NewCustomerComponent , {
       width: '450px',
@@ -110,14 +112,14 @@ export class CustomerComponent implements OnInit{
               this.processCustomerResponse(resp);
             })
   }
-
+*/
   openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{
     return this.snackBar.open(message, action, {
       duration: 2000
     })
 
   }
-  */
+
 }
 
 export interface CustomerElement {
@@ -127,5 +129,4 @@ export interface CustomerElement {
   name:string,
   email:string,
   mobileNumber:string
-  actions:string
 }
