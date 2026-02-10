@@ -39,7 +39,7 @@ export class CustomerService {
    * delete customer
    */
   deleteCustomer(customerId: any){
-    const endpoint = `${base_url}/customers/ ${customerId}`;
+    const endpoint = `${base_url}/customers/${customerId}`;
     return this.http.delete(endpoint);
   }
 

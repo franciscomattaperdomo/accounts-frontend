@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { NewCustomerComponent } from 'src/app/modules/components/new-customer/new-customer.component';
+import { ConfirmComponent } from 'src/app/modules/shared/components/confirm/confirm.component';
 import { CustomerService } from 'src/app/modules/shared/services/customer.service';
 
 @Component({
@@ -86,10 +87,10 @@ export class CustomerComponent implements OnInit{
     });
   }
 
-  /*
-  delete(id: any){
+
+  delete(customerId: any){
     const dialogRef = this.dialog.open(ConfirmComponent , {
-      data: {id: id, module: "customer"}
+      data: {customerId: customerId, module: "customer"}
     });
 
     dialogRef.afterClosed().subscribe((result:any) => {
@@ -103,6 +104,7 @@ export class CustomerComponent implements OnInit{
     });
   }
 
+  /*
   search( term: string){
     if( term.length === 0){
       return this.getCustomers();
