@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerService } from '../../services/customer.service';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-confirm',
@@ -9,6 +10,7 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class ConfirmComponent {
   private customerService= inject(CustomerService);
+  private accountService= inject(AccountService);
   private dialogRef= inject(MatDialogRef);
   public data = inject(MAT_DIALOG_DATA);
 
@@ -18,7 +20,7 @@ export class ConfirmComponent {
 
   delete(){
     if (this.data != null){
-      //if (this.data.module == "customer") {
+      if (this.data.module == "customer") {
      this.customerService.deleteCustomer(this.data.customerId)
       .subscribe({
         next: (data: any) => {
@@ -28,14 +30,14 @@ export class ConfirmComponent {
           this.dialogRef.close(2);
         }
       });
-      /*} else if ( this.data.module == "product" )  {
-            this.productService.deleteProduct(this.data.id).
+      } else if ( this.data.module == "account" )  {
+            this.accountService.deleteAccount(this.data.accountId).
               subscribe( (data:any) =>{
                 this.dialogRef.close(1);
               }, (error: any) => {
                 this.dialogRef.close(2);
               })
-      }*/
+      }
     } else {
       this.dialogRef.close(2);
     }

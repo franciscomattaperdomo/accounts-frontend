@@ -3,9 +3,9 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { NewCustomerComponent } from 'src/app/modules/components/new-customer/new-customer.component';
 import { ConfirmComponent } from 'src/app/modules/shared/components/confirm/confirm.component';
 import { CustomerService } from 'src/app/modules/shared/services/customer.service';
+import { NewCustomerComponent } from '../new-customer/new-customer.component';
 
 @Component({
   selector: 'app-customer',

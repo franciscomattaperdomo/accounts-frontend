@@ -13,7 +13,7 @@ export class SidenavComponent {
   menuNav = [
     {name: "Inicio", route: "home", icon: "home"},
     {name: "Clientes", route: "customer", icon: "category"},
-    {name: "Cuentas", route: "home", icon: "production_quantity_limits"}
+    {name: "Cuentas", route: "account", icon: "production_quantity_limits"}
   ]
 
   constructor(media: MediaMatcher) {

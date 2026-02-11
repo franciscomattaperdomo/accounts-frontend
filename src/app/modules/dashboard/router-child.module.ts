@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { CustomerComponent } from '../customer/components/customer/customer.component';
+import { AccountComponent } from '../account/components/account/account.component';
 
 
 const childRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
     { path: 'customer', component: CustomerComponent },
+    { path: 'account', component: AccountComponent },
 ]
 
 @NgModule({
