@@ -108,21 +108,65 @@ export class AccountComponent {
     });
   }
 
-  search(customerId: any){
-    if ( customerId.length === 0){
+  search(data: any, filter:string){
+    if ( data.length === 0){
       return this.getAccounts();
     }
 
-    this.accountService.getAccountByCustomerId(customerId)
-      .subscribe({
-        next: (data: any) => {
-          console.log('respuesta clientes: ', data);
-          this.processAccountResponse(data);
-        },
-        error: (error: any) => {
-          console.log('error: ', error);
-        }
-      });
+    switch (filter) {
+      case "ID":
+        this.accountService.getAccountsByCustomerId(data)
+        .subscribe({
+          next: (data: any) => {
+            console.log('respuesta clientes: ', data);
+            this.processAccountResponse(data);
+          },
+          error: (error: any) => {
+            console.log('error: ', error);
+          }
+        });
+      break;
+      case "NAME":
+        this.accountService.getAccountsByBranchName(data)
+        .subscribe({
+          next: (data: any) => {
+            console.log('respuesta clientes: ', data);
+            this.processAccountResponse(data);
+          },
+          error: (error: any) => {
+            console.log('error: ', error);
+          }
+        });
+        break;
+      case "TYPE":
+        console.log("fma");
+        console.log(data);
+        this.accountService.getAccountsByAccountType(data)
+        .subscribe({
+          next: (data: any) => {
+            console.log('respuesta clientes: ', data);
+            this.processAccountResponse(data);
+          },
+          error: (error: any) => {
+            console.log('error: ', error);
+          }
+        });
+        break;
+      case "STATUS":
+        this.accountService.getAccountsByAccountStatus(data)
+        .subscribe({
+          next: (data: any) => {
+            console.log('respuesta clientes: ', data);
+            this.processAccountResponse(data);
+          },
+          error: (error: any) => {
+            console.log('error: ', error);
+          }
+        });
+      break;
+      default:
+        console.log('Tipo no reconocido');
+    }
   }
 
   exportExcel(){

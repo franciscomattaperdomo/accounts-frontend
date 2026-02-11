@@ -54,7 +54,7 @@ export class CustomerService {
   /**
    * get customer by mobile number
    */
-  getCustomerByMobileNumber(mobileNumber: any){
+  getCustomersByMobileNumber(mobileNumber: any){
     const endpoint = `${base_url}/customers/mobileNumber/ ${mobileNumber}`;
     return this.http.get(endpoint);
   }
@@ -62,8 +62,16 @@ export class CustomerService {
   /**
    * get customer by email
    */
-  getCustomerByEmail(email: any){
+  getCustomersByEmail(email: any){
     const endpoint = `${base_url}/customers/email/ ${email}`;
+    return this.http.get(endpoint);
+  }
+
+  /**
+   * get customer by name
+   */
+  getCustomersByName(name: any){
+    const endpoint = `${base_url}/customers/name/ ${name}`;
     return this.http.get(endpoint);
   }
 

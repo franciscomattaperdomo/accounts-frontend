@@ -2,10 +2,17 @@
     <h2 class="alinear">Listado de Cuentas</h2>
     <mat-card-header>
         <div>
+            <mat-select #filter required>
+                <mat-option value="ID">Búsqueda por Id Empleado</mat-option>
+                <mat-option value="NAME">Búsqueda por nombre sucursal/oficina</mat-option>
+                <mat-option value="TYPE">Búsqueda por tipo de cuenta</mat-option>
+                <mat-option value="STATUS">Búsqueda por estado cuenta</mat-option>
+            </mat-select>
+
             <mat-form-field hintLabel="Buscar cuenta" appearance="fill">
 
                 <mat-label>Buscar Cliente Id</mat-label>
-                <input matInput #input (keyup)="search(input.value)">
+                <input matInput #input (keyup)="search(input.value, filter.value)">
             </mat-form-field>
         </div>
     </mat-card-header>

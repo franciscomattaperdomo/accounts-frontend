@@ -102,12 +102,52 @@ export class CustomerComponent implements OnInit{
     });
   }
 
-  search( customerId: string){
-    if( customerId.length === 0){
+  search( data: string, filter:string){
+    if( data.length === 0){
       return this.getCustomers();
     }
 
-    this.customerService.getCustomerById(customerId)
+    switch (filter) {
+      case "ID":
+        this.customerService.getCustomerById(data)
+              .subscribe({
+        next: (data: any) => {
+          console.log('respuesta clientes: ', data);
+          this.processCustomerResponse(data);
+        },
+        error: (error: any) => {
+          console.log('error: ', error);
+        }
+      });
+      break;
+      case "NAME":
+        this.customerService.getCustomersByName(data)
+        .subscribe({
+          next: (data: any) => {
+            console.log('respuesta clientes: ', data);
+            this.processCustomerResponse(data);
+          },
+          error: (error: any) => {
+            console.log('error: ', error);
+          }
+        });
+        break;
+      case "EMAIL":
+        console.log("fma");
+        console.log(data);
+        this.customerService.getCustomersByEmail(data)
+        .subscribe({
+          next: (data: any) => {
+            console.log('respuesta clientes: ', data);
+            this.processCustomerResponse(data);
+          },
+          error: (error: any) => {
+            console.log('error: ', error);
+          }
+        });
+        break;
+      case "PHONE":
+        this.customerService.getCustomersByMobileNumber(data)
       .subscribe({
         next: (data: any) => {
           console.log('respuesta clientes: ', data);
@@ -117,7 +157,10 @@ export class CustomerComponent implements OnInit{
           console.log('error: ', error);
         }
       });
-
+      break;
+      default:
+        console.log('Tipo no reconocido');
+    }
   }
 
   openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{

@@ -45,10 +45,35 @@ export class AccountService {
   /**
    * search by client id
    */
-  getAccountByCustomerId(customerId: any){
+  getAccountsByCustomerId(customerId: any){
     const endpoint = `${ base_url}/accounts/customerId/${customerId}`;
     return this.http.get(endpoint);
   }
+
+/**
+   * search by Branch Name
+   */
+  getAccountsByBranchName(branchName: any){
+    const endpoint = `${ base_url}/accounts/branchName/${branchName}`;
+    return this.http.get(endpoint);
+  }
+
+/**
+   * search by Account Type
+   */
+  getAccountsByAccountType(accountType: any){
+    const endpoint = `${ base_url}/accounts/accountType/${accountType}`;
+    return this.http.get(endpoint);
+  }
+
+/**
+   * search by Account Status
+   */
+  getAccountsByAccountStatus(accountStatus: any){
+    const endpoint = `${ base_url}/accounts/accountStatus/${accountStatus}`;
+    return this.http.get(endpoint);
+  }
+
 
   /**
    * export excel products

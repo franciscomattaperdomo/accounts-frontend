@@ -2,9 +2,17 @@
     <h2 class="alinear">Listado de Clientes</h2>
     <mat-card-header>
         <div>
-            <mat-form-field hintLabel="Búscar cliente" appearance="fill">
-                <mat-label>Buscar Cliente</mat-label>
-                <input matInput #input (keyup)="search(input.value)">
+
+              <mat-select #filter required>
+                  <mat-option value="ID">Búsqueda por código</mat-option>
+                  <mat-option value="NAME">Búsqueda por nombre</mat-option>
+                  <mat-option value="EMAIL">Búsqueda por correo</mat-option>
+                  <mat-option value="PHONE">Búsqueda por celular</mat-option>
+              </mat-select>
+
+            <mat-form-field hintLabel="Búscar" appearance="fill">
+                <mat-label>Buscar Clientes</mat-label>
+                <input matInput #input (keyup)="search(input.value, filter.value)">
             </mat-form-field>
         </div>
     </mat-card-header>
