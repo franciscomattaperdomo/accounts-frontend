@@ -2,3 +2,22 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Snackbar personalizado - fondo amarillo, texto negro */
+.custom-snackbar {
+  --mdc-snackbar-container-color: #ffeb3b !important;  /* Fondo amarillo */
+  --mdc-snackbar-supporting-text-color: #000000 !important; /* Texto negro */
+  --mat-mdc-snack-bar-button-color: #000000 !important; /* Botón negro */
+}
+
+.custom-snackbar .mdc-snackbar__surface {
+  background-color: #ffeb3b !important;
+}
+
+.custom-snackbar .mat-mdc-snack-bar-label {
+  color: #000000 !important;
+}
+
+.custom-snackbar .mat-mdc-button {
+  color: #000000 !important;
+}

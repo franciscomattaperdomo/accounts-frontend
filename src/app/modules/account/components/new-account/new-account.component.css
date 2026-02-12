@@ -7,9 +7,9 @@
     width: 100%;
 }
 
-/* Snackbar personalizado - fondo azul, texto blanco */
+/* Snackbar personalizado - fondo amarillo, texto negro */
 .custom-snackbar {
-  --mdc-snackbar-container-color: #0043a8 !important;  /* Azul Material */
-  --mdc-snackbar-supporting-text-color: white !important; /* Texto blanco */
-  --mat-mdc-snack-bar-button-color: white !important; /* Botón blanco */
+  --mdc-snackbar-container-color: #ffeb3b !important;  /* Fondo amarillo */
+  --mdc-snackbar-supporting-text-color: #000000 !important; /* Texto negro */
+  --mat-mdc-snack-bar-button-color: #000000 !important; /* Botón negro */
 }
