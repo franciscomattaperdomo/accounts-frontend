@@ -2,6 +2,7 @@ import { Component, Inject, inject, OnInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/modules/shared/services/customer.service';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-customer',
@@ -15,6 +16,7 @@ export class NewCustomerComponent implements OnInit{
   private dialogRef= inject(MatDialogRef);
   public data = inject(MAT_DIALOG_DATA);
   formStatus: string = "";
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     console.log(this.data);
@@ -52,7 +54,7 @@ export class NewCustomerComponent implements OnInit{
           this.dialogRef.close(1);
         },
         error: (error: any) => {
-          this.dialogRef.close(2);
+          this.openSnackBar("Se produjo un error al crear un cliente\n\n" + JSON.stringify(error.error) , "Error");
         }
       });
     } else {
@@ -64,7 +66,7 @@ export class NewCustomerComponent implements OnInit{
           this.dialogRef.close(1);
         },
         error: (error: any) => {
-          this.dialogRef.close(2);
+          this.openSnackBar("Se produjo un error al crear un cliente\n\n" + JSON.stringify(error.error) , "Error");
         }
       });
     }
@@ -82,5 +84,12 @@ export class NewCustomerComponent implements OnInit{
       email: [data.email, Validators.required],
       mobileNumber: [data.mobileNumber, Validators.required],
     });
+  }
+
+  openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{
+    return this.snackBar.open(message, action, {
+      duration: 5000,
+      panelClass: ['custom-snackbar']
+    })
   }
 }

@@ -64,8 +64,8 @@ export class CustomerComponent implements OnInit{
     if( result == 1){
       this.openSnackBar("Cliente creado", "Exitosa");
       this.getCustomers();
-    } else if (result == 2) {
-      this.openSnackBar("Se produjo un error al crear un cliente", "Error");
+    } else  if (result == 2) {
+      this.openSnackBar("Se produjo un error al crear un cliente\n", "Error");
     }
   });
   }
@@ -165,7 +165,8 @@ export class CustomerComponent implements OnInit{
 
   openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{
     return this.snackBar.open(message, action, {
-      duration: 2000
+      duration: 5000,
+      panelClass: ['custom-snackbar']
     })
   }
 }

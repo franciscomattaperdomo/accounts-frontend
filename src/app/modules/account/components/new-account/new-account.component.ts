@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AccountService } from 'src/app/modules/shared/services/account.service';
 import { CustomerService } from 'src/app/modules/shared/services/customer.service';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 
 export interface Customer{
   customerId: number,
@@ -23,6 +24,7 @@ export class NewAccountComponent implements OnInit{
   private customerService= inject(CustomerService);
   private dialogRef= inject(MatDialogRef);
   public data = inject(MAT_DIALOG_DATA);
+  private snackBar = inject(MatSnackBar);
 
   private accountService = inject(AccountService);
 
@@ -66,7 +68,8 @@ export class NewAccountComponent implements OnInit{
           this.dialogRef.close(1);
         },
         error: (error: any) => {
-          this.dialogRef.close(2);
+          this.openSnackBar("Se produjo un error al crear un cliente\n\n" + JSON.stringify(error.error) , "Error");
+          //this.dialogRef.close(2);
         }
       });
     } else {
@@ -78,7 +81,8 @@ export class NewAccountComponent implements OnInit{
             this.dialogRef.close(1);
           },
           error: (error: any) => {
-            this.dialogRef.close(2);
+            this.openSnackBar("Se produjo un error al crear un cliente\n\n" + JSON.stringify(error.error) , "Error");
+            //this.dialogRef.close(2);
           }
         });
     }
@@ -109,6 +113,13 @@ export class NewAccountComponent implements OnInit{
       accountType: [data.accountType, Validators.required],
       branchName: [data.branchName, Validators.required],
       accountStatus: [data.accountStatus, Validators.required]
+    })
+  }
+
+  openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{
+    return this.snackBar.open(message, action, {
+      duration: 5000,
+      panelClass: ['custom-snackbar']
     })
   }
 

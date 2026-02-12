@@ -7,3 +7,9 @@
     width: 100%;
 }
 
+/* Snackbar personalizado - fondo azul, texto blanco */
+.custom-snackbar {
+  --mdc-snackbar-container-color: #0043a8 !important;  /* Azul Material */
+  --mdc-snackbar-supporting-text-color: white !important; /* Texto blanco */
+  --mat-mdc-snack-bar-button-color: white !important; /* Botón blanco */
+}
